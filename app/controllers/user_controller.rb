@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  before_action :set_user, only: %i(show edit update)
+  before_action :set_user, only: %i(show edit update destroy)
 
   def show
   end
@@ -13,6 +13,11 @@ class UserController < ApplicationController
     else
       render action: :edit
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to(new_user_session_path)
   end
 
   private
